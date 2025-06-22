@@ -1,0 +1,27 @@
+from stats import get_word_count
+from stats import get_sorted_character_list
+
+filename = "books/frankenstein.txt"
+
+def get_book_text(filename):
+    with open(filename) as f:
+        file_contents = f.read()
+        return file_contents
+
+def main():
+    text = get_book_text(filename)
+    word_count = get_word_count(text)
+    character_count = get_sorted_character_list(text)
+
+    print ("============ BOOKBOT ============")
+    print (f"Analyzing book found at {filename}")
+    print ("----------- Word Count ----------")
+    print (f"Found {word_count} total words")
+    print ("--------- Character Count -------")
+    for character in character_count:
+        char = character["char"]
+        num = character["num"]
+        print(f"{char}: {num}")
+    print("============= END ===============")
+
+main()
